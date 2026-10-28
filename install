@@ -4,11 +4,11 @@ src=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 bin=${XDG_BIN_HOME:-"$HOME/.local/bin"}
 units=${XDG_CONFIG_HOME:-"$HOME/.config"}/systemd/user
 mkdir -p "$bin" "$units"
-install -m 755 "$src/sun-theme" "$bin/sun-theme"
+install -m 755 "$src/circadian" "$bin/circadian"
 # systemd paths in ExecStart must be quoted, not interpreted by a shell.
-escaped=$(printf '%s' "$bin/sun-theme" | sed 's/\\/\\\\/g; s/"/\\"/g; s/%/%%/g')
-printf '[Unit]\nDescription=Apply Omarchy solar theme\nAfter=graphical-session.target\n\n[Service]\nType=oneshot\nExecStart="%s" check\n' "$escaped" > "$units/omarchy-sun-theme.service"
-printf '[Unit]\nDescription=Check Omarchy solar theme\n\n[Timer]\nOnStartupSec=1min\nOnUnitActiveSec=5min\nAccuracySec=30s\n\n[Install]\nWantedBy=timers.target\n' > "$units/omarchy-sun-theme.timer"
+escaped=$(printf '%s' "$bin/circadian" | sed 's/\\/\\\\/g; s/"/\\"/g; s/%/%%/g')
+printf '[Unit]\nDescription=Apply Omarchy solar theme\nAfter=graphical-session.target\n\n[Service]\nType=oneshot\nExecStart="%s" check\n' "$escaped" > "$units/omarchy-circadian.service"
+printf '[Unit]\nDescription=Check Omarchy solar theme\n\n[Timer]\nOnStartupSec=1min\nOnUnitActiveSec=5min\nAccuracySec=30s\n\n[Install]\nWantedBy=timers.target\n' > "$units/omarchy-circadian.timer"
 systemctl --user daemon-reload
-systemctl --user enable --now omarchy-sun-theme.timer
-printf 'Installed. Set location with sun-theme location auto, search, or coords.\n'
+systemctl --user enable --now omarchy-circadian.timer
+printf 'Installed. Set location with circadian location auto, search, or coords.\n'

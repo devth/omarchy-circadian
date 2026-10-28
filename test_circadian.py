@@ -2,7 +2,7 @@ import datetime as dt
 import runpy
 import unittest
 
-app = runpy.run_path('sun-theme')
+app = runpy.run_path('circadian')
 
 class SolarTests(unittest.TestCase):
     def test_equator_day_and_night(self):
