@@ -1,10 +1,10 @@
 # Omarchy Circadian
 
-Light/dark theme pairs based on sunrise and sunset. A systemd user timer runs a short Python standard-library process every five minutes; nothing runs continuously. The solar calculation handles polar day and night. Theme transitions can be delayed by up to about six minutes (and until login/wake if the computer was asleep).
+Light/dark theme pairs based on sunrise and sunset. A systemd user timer runs a short Qt/C++ process every five minutes; nothing runs continuously. The solar calculation handles polar day and night. Theme transitions can be delayed by up to about six minutes (and until login/wake if the computer was asleep).
 
 ## Install
 
-Requires Omarchy, Python 3, and systemd user services. Run `./install`, then set your location:
+Requires Omarchy, a C++17 compiler, make, pkg-config, Qt 6 Core and Network development libraries, and systemd user services. Run `./install`, then set your location:
 
 ```sh
 circadian location auto                       # approximate IP geolocation
